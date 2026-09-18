@@ -1,0 +1,21 @@
+version: 1
+model: jev-latest
+base: origin/main
+threshold: 0.7
+maxPatchChars: 24000
+
+rules:
+  - id: adr-required
+    question: Does this change include an ADR when it makes an important architectural decision?
+    level: error
+    message: Add an ADR for the architectural decision.
+
+  - id: storybook-required
+    question: Does this change update Storybook when it adds, removes, or materially changes a UI component, page, or screen?
+    level: error
+    message: Add or update the related Storybook stories.
+
+  - id: changenote-required
+    question: Does this change include a changenote proposal for user-visible behavior?
+    level: warning
+    message: Add a changenote proposal.

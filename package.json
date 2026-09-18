@@ -1,0 +1,55 @@
+{
+  "name": "jev-marshal",
+  "version": "0.1.0",
+  "description": "Semantic PR policy checks powered by Jev.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LightningK0ala/jev-marshal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LightningK0ala/jev-marshal/issues"
+  },
+  "homepage": "https://github.com/LightningK0ala/jev-marshal#readme",
+  "keywords": [
+    "jev",
+    "pull-request",
+    "policy",
+    "ci",
+    "semantic"
+  ],
+  "bin": {
+    "jev-marshal": "dist/cli.js"
+  },
+  "exports": "./dist/index.js",
+  "files": [
+    "assets",
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1"
+  },
+  "scripts": {
+    "build": "tsup src/cli.ts src/index.ts --format esm --dts --clean",
+    "check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "commander": "^14.0.1",
+    "yaml": "^2.8.1",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "@types/node": "^24.7.2",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.1"
+  }
+}

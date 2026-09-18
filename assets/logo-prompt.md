@@ -1,0 +1,3 @@
+# Logo prompt
+
+Create a minimal vector-style logo mark for an open-source developer CLI named “Jev Marshal”. Combine a geometric six-point marshal badge with a pull-request check symbol. Form the check from two clean code-branch lines and three circular Git nodes. Make the mark calm, friendly, and authoritative. Do not use a person, mascot, weapon, or other police imagery. Use flat shapes, a strong silhouette, precise symmetry, and ample negative space. Use near-black charcoal and one warm amber accent. Use a transparent background. Do not use text, gradients, shadows, texture, borders, scenery, or small details. The mark must remain clear at 32 px and work as a GitHub repository logo.
