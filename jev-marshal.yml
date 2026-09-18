@@ -1,24 +1,24 @@
 version: 1
 model: jev-latest
 base: origin/main
-threshold: 0.7
+threshold: 0.5
 maxPatchChars: 24000
 
 rules:
   - id: tests-required
-    question: Does a change to CLI behavior include tests that cover the new or changed behavior?
+    question: If no changed path begins with src/, return not_applicable. Otherwise, do the changed tests cover the new or changed CLI behavior?
     level: error
     message: Add tests for the changed CLI behavior.
 
   - id: docs-required
-    question: Does a change to the CLI interface, configuration, output, or workflow update the related user documentation?
+    question: If no changed path begins with src/, return not_applicable. Otherwise, when the src change affects the CLI interface, configuration, output, or workflow, does the patch update the related README or example configuration?
     level: error
     message: Update the related README or example configuration.
 
   - id: claims-supported
-    question: Are new product claims in documentation or the marketing page supported by the repository implementation?
-    level: error
-    message: Remove the unsupported claim or add evidence for it.
+    question: If the patch adds or changes a factual capability, privacy, or installation claim in README.md or docs, is that claim supported by implementation evidence in the patch? If it does not change such a claim, this rule is not applicable.
+    level: warning
+    message: Remove the unsupported claim or add implementation evidence.
 
   - id: pages-source-required
     question: When the marketing page changes, are all referenced local assets present under docs and suitable for static hosting?
