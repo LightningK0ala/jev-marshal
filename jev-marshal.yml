@@ -1,0 +1,26 @@
+version: 1
+model: jev-latest
+base: origin/main
+threshold: 0.7
+maxPatchChars: 24000
+
+rules:
+  - id: tests-required
+    question: Does a change to CLI behavior include tests that cover the new or changed behavior?
+    level: error
+    message: Add tests for the changed CLI behavior.
+
+  - id: docs-required
+    question: Does a change to the CLI interface, configuration, output, or workflow update the related user documentation?
+    level: error
+    message: Update the related README or example configuration.
+
+  - id: claims-supported
+    question: Are new product claims in documentation or the marketing page supported by the repository implementation?
+    level: error
+    message: Remove the unsupported claim or add evidence for it.
+
+  - id: pages-source-required
+    question: When the marketing page changes, are all referenced local assets present under docs and suitable for static hosting?
+    level: error
+    message: Add the missing static asset or fix its path.

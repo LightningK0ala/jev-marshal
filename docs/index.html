@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jev Marshal checks pull requests against plain-language repository rules.">
+  <meta name="theme-color" content="#f5ad24">
+  <title>Jev Marshal — Clear signals for every pull request</title>
+  <link rel="icon" href="assets/logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#how-it-works">Skip to how it works</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Jev Marshal home">
+      <img src="assets/logo.png" width="42" height="42" alt="">
+      <span>Jev Marshal</span>
+    </a>
+    <a class="github-link" href="https://github.com/LightningK0ala/jev-marshal">View on GitHub <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy-panel">
+        <h1 id="hero-title">Repository<br>rules.<br>Clear signals.</h1>
+        <p>Ask plain questions about every pull request. Jev Marshal checks the change before you merge.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#how-it-works">Get started</a>
+          <a class="text-link" href="https://github.com/LightningK0ala/jev-marshal">Read the source <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="route-line">Better changes<br>on a clearer route</p>
+      </div>
+
+      <div class="signal-board" aria-label="Example Jev Marshal check for pull request 482">
+        <div class="pull-request-id"><span>Pull request</span><strong>#482</strong></div>
+        <p class="route-note">Check<br>before<br>you<br>merge.</p>
+        <svg class="route-diagram" viewBox="0 0 620 360" role="img" aria-labelledby="route-title route-description">
+          <title id="route-title">Pull request policy route</title>
+          <desc id="route-description">One pull request branches into three checks. Two checks pass or do not apply. The changenote check fails.</desc>
+          <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M34 180H250L365 50H500"/>
+            <path d="M250 180H500"/>
+            <path d="M250 180L365 310H500"/>
+            <path d="M34 180V345H190" stroke-dasharray="10 12" stroke-width="4"/>
+          </g>
+          <g stroke="currentColor" stroke-width="8">
+            <circle cx="34" cy="180" r="22" fill="#f4f0e7"/>
+            <circle class="lamp lamp-green" cx="510" cy="50" r="30"/>
+            <circle class="lamp lamp-neutral" cx="510" cy="180" r="30"/>
+            <circle class="lamp lamp-red" cx="510" cy="310" r="30"/>
+          </g>
+          <path d="M190 336l22 9-22 9z" fill="currentColor"/>
+        </svg>
+
+        <dl class="rule-results">
+          <div class="result result-pass">
+            <dt>ADR required</dt>
+            <dd>Compliant</dd>
+          </div>
+          <div class="result result-na">
+            <dt>Storybook updated</dt>
+            <dd>Not applicable</dd>
+          </div>
+          <div class="result result-fail">
+            <dt>Changenote included</dt>
+            <dd>Non-compliant</dd>
+          </div>
+        </dl>
+
+        <div class="hold-status" role="status">
+          <span class="hold-icon" aria-hidden="true">!</span>
+          <strong>Hold</strong>
+          <span>1 rule needs work</span>
+        </div>
+        <div class="board-caption" aria-hidden="true">
+          <span>Same rules. Smoother journeys.</span>
+          <span>Jev Marshal</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps-preview" id="how-it-works" aria-label="How Jev Marshal works">
+      <ol class="steps">
+        <li><span>1</span><h2>Write rules</h2><p>Define what a good change looks like in a simple configuration file.</p></li>
+        <li><span>2</span><h2>Run Marshal</h2><p>Jev Marshal checks every pull request against your rules.</p></li>
+        <li><span>3</span><h2>Merge with confidence</h2><p>Get clear results and keep your repository healthy.</p></li>
+      </ol>
+      <div class="code-wrap">
+        <p>Example · jev-marshal.yml</p>
+        <pre><code><span class="line">rules:</span>
+  - id: adr-required
+    question: Does this change need an ADR?
+    level: error
+    message: Add an ADR.</code></pre>
+      </div>
+    </section>
+
+    <section class="decisions" aria-labelledby="decisions-title">
+      <div class="section-heading">
+        <h2 id="decisions-title">Plain questions in.<br>Typed decisions out.</h2>
+        <p>Write the policy that your repository needs. Marshal reports one clear result for each rule.</p>
+      </div>
+      <dl class="decision-list">
+        <div><dt>Compliant</dt><dd>The change meets the rule.</dd></div>
+        <div><dt>Non-compliant</dt><dd>The change needs more work.</dd></div>
+        <div><dt>Not applicable</dt><dd>The rule does not apply.</dd></div>
+        <div><dt>Unknown</dt><dd>The patch has too little evidence. Error rules block.</dd></div>
+      </dl>
+    </section>
+
+    <section class="change-only" aria-labelledby="change-only-title">
+      <h2 id="change-only-title">The change.<br>Not the whole repository.</h2>
+      <p>Marshal sends the pull request title, description, changed file list, and patch. It does not send the full repository.</p>
+      <a class="text-link light-link" href="https://github.com/LightningK0ala/jev-marshal#readme">See how it works <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="final-cta" aria-labelledby="cta-title">
+      <h2 id="cta-title">Give your next PR<br>a clear route.</h2>
+      <a class="button button-dark" href="https://github.com/LightningK0ala/jev-marshal">View Jev Marshal on GitHub <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="#top"><img src="assets/logo.png" width="36" height="36" alt=""><span>Jev Marshal</span></a>
+    <span>MIT licensed.</span>
+  </footer>
+</body>
+</html>

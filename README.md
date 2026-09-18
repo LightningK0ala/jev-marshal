@@ -8,13 +8,16 @@ Jev Marshal checks pull requests against your repository rules.
 
 Write each rule as a plain question. Jev Marshal reads the Git change and reports if the change complies.
 
-## Install
+## Try it
 
-You need Node.js 20 or later.
+You need Node.js 20 or later. The npm package is not published yet.
 
 ```sh
-npm install --save-dev jev-marshal
-npx jev-marshal init
+git clone https://github.com/LightningK0ala/jev-marshal.git
+cd jev-marshal
+npm ci
+npm run build
+node dist/cli.js init
 ```
 
 The `init` command creates `jev-marshal.yml`.
@@ -26,7 +29,7 @@ For CI, set `TYPESAFE_API_KEY` in your secret store.
 For local use, run:
 
 ```sh
-npx jev-marshal auth set
+node dist/cli.js auth set
 ```
 
 Jev Marshal stores the key in your user configuration folder. It does not put the key in your repository.
@@ -60,31 +63,31 @@ Use `error` to block the check. Use `warning` to report a result without a block
 Check the current branch against the configured base:
 
 ```sh
-npx jev-marshal
+node dist/cli.js
 ```
 
 Check staged changes:
 
 ```sh
-npx jev-marshal --staged
+node dist/cli.js --staged
 ```
 
 Check another base:
 
 ```sh
-npx jev-marshal --base origin/develop
+node dist/cli.js --base origin/develop
 ```
 
 View the exact request without an API call:
 
 ```sh
-npx jev-marshal --dry-run
+node dist/cli.js --dry-run
 ```
 
 Use JSON output:
 
 ```sh
-npx jev-marshal --format json
+node dist/cli.js --format json
 ```
 
 ## Use GitHub Actions
@@ -108,7 +111,8 @@ jobs:
           node-version: 22
 
       - run: npm ci
-      - run: npx jev-marshal
+      - run: npm run build
+      - run: node dist/cli.js
         env:
           TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
 ```

@@ -1,0 +1,5 @@
+services:
+  web:
+    type: static
+    root: docs
+    public: true
