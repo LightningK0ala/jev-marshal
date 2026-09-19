@@ -10,17 +10,15 @@ Write each rule as a plain question. Jev Marshal reads the Git change and report
 
 ## Try it
 
-You need Node.js 20 or later. The npm package is not published yet.
+You need Node.js 20 or later. Run Jev Marshal directly from npm—no installation required:
 
 ```sh
-git clone https://github.com/LightningK0ala/jev-marshal.git
-cd jev-marshal
-npm ci
-npm run build
-node dist/cli.js init
+npx jev-marshal init
+npx jev-marshal auth set
+npx jev-marshal
 ```
 
-The `init` command creates `jev-marshal.yml`.
+Run these commands from the Git repository you want to check. The `init` command creates `jev-marshal.yml`; the first `npx` run may ask for confirmation before downloading the package.
 
 ## Add your API key
 
@@ -29,7 +27,7 @@ For CI, set `TYPESAFE_API_KEY` in your secret store.
 For local use, run:
 
 ```sh
-node dist/cli.js auth set
+npx jev-marshal auth set
 ```
 
 Jev Marshal stores the key in your user configuration folder. It does not put the key in your repository.
@@ -63,31 +61,31 @@ Use `error` to block the check. Use `warning` to report a result without a block
 Check the current branch against the configured base:
 
 ```sh
-node dist/cli.js
+npx jev-marshal
 ```
 
 Check staged changes:
 
 ```sh
-node dist/cli.js --staged
+npx jev-marshal --staged
 ```
 
 Check another base:
 
 ```sh
-node dist/cli.js --base origin/develop
+npx jev-marshal --base origin/develop
 ```
 
 View the exact request without an API call:
 
 ```sh
-node dist/cli.js --dry-run
+npx jev-marshal --dry-run
 ```
 
 Use JSON output:
 
 ```sh
-node dist/cli.js --format json
+npx jev-marshal --format json
 ```
 
 ## Use GitHub Actions
@@ -110,12 +108,12 @@ jobs:
         with:
           node-version: 22
 
-      - run: npm ci
-      - run: npm run build
-      - run: node dist/cli.js
+      - run: npx --yes jev-marshal@0.1.0
         env:
           TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
 ```
+
+Pinning the version in CI keeps checks reproducible. Update `@0.1.0` when you are ready to adopt a new release.
 
 Jev Marshal uses the pull request title, description, changed file list, and patch. It does not send the full repository.
 
