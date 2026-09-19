@@ -38,6 +38,7 @@
   "scripts": {
     "build": "tsup src/cli.ts src/index.ts --format esm --dts --clean",
     "check": "tsc --noEmit",
+    "prepack": "npm run check && npm test && npm run build",
     "test": "vitest run",
     "test:watch": "vitest"
   },
