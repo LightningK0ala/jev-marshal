@@ -121,6 +121,22 @@ Jev Marshal uses the pull request title, description, changed file list, and pat
 
 ## Results
 
+Interactive terminals use color and clear status markers to make findings easy to scan:
+
+```text
+Jev Marshal
+2 changed files · origin/main...HEAD
+
+Results
+✓ PASS    tests-required  96%
+✗ FAIL    [error] docs-required  88%
+  ↳ Update the documentation.
+
+✗ Check failed
+  1 passed · 1 violation
+  1 blocking error
+```
+
 Each rule has one result:
 
 - `compliant`
@@ -129,6 +145,8 @@ Each rule has one result:
 - `unknown`
 
 An `unknown` result blocks an `error` rule. This prevents an incomplete patch from passing without review.
+
+Color is disabled automatically when output is redirected or `--format json` is used. Set `NO_COLOR=1` to disable color explicitly, or `FORCE_COLOR=1` to enable it when the terminal is not detected automatically.
 
 Exit code `0` means that no error rule failed. Exit code `1` means that an error rule failed. Exit code `2` means that the command could not complete.
 

@@ -19,6 +19,11 @@ interface CheckOptions {
   description?: string;
 }
 
+function useColors(): boolean {
+  if ("NO_COLOR" in process.env || process.env.FORCE_COLOR === "0") return false;
+  return Boolean(process.stdout.isTTY || process.env.FORCE_COLOR);
+}
+
 function addCheckOptions(command: Command): Command {
   return command
     .option("--base <ref>", "compare HEAD with this Git ref")
@@ -71,7 +76,9 @@ async function check(options: CheckOptions): Promise<number> {
     apiKey,
     endpoint: process.env.JEV_MARSHAL_API_URL,
   });
-  process.stdout.write(options.format === "json" ? `${JSON.stringify(report, null, 2)}\n` : formatText(report));
+  process.stdout.write(
+    options.format === "json" ? `${JSON.stringify(report, null, 2)}\n` : formatText(report, { colors: useColors() }),
+  );
   return exitCode(report);
 }
 
