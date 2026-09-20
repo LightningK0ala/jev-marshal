@@ -60,4 +60,26 @@ describe("Jev evaluation", () => {
     expect(report.results[0]?.decision).toBe("unknown");
     expect(report.summary.errors).toBe(1);
   });
+
+  it("uses a rule threshold instead of the global threshold", async () => {
+    const configWithRuleThreshold: Config = {
+      ...config,
+      rules: [{ ...config.rules[0]!, threshold: 0.9 }],
+    };
+    const fetcher = async () => new Response(JSON.stringify({
+      model: "jev-test",
+      answers: {
+        adr: {
+          type: "choice",
+          choice: "compliant",
+          confidence: 0.8,
+          probabilities: { compliant: 0.8, non_compliant: 0.05, not_applicable: 0.1, unknown: 0.05 },
+        },
+      },
+    }), { status: 200 });
+
+    const report = await evaluateRules({ config: configWithRuleThreshold, packet, apiKey: "test", fetcher });
+    expect(report.results[0]?.decision).toBe("unknown");
+    expect(report.summary.errors).toBe(1);
+  });
 });
