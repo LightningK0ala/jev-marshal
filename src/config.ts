@@ -11,6 +11,7 @@ const ruleSchema = z.object({
   question: z.string().trim().min(1),
   level: z.enum(["warning", "error"]).default("error"),
   message: z.string().trim().min(1),
+  threshold: z.number().min(0.5).max(1).optional(),
 });
 
 const configSchema = z.object({

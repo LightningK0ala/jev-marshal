@@ -19,7 +19,8 @@ export async function evaluateRules(input: {
   const results: RuleResult[] = input.config.rules.map((rule) => {
     const answer = response.answers[rule.id];
     if (!answer) throw new Error(`Jev did not return an answer for rule \"${rule.id}\".`);
-    const decision: Decision = answer.confidence >= input.config.threshold ? answer.choice : "unknown";
+    const threshold = rule.threshold ?? input.config.threshold;
+    const decision: Decision = answer.confidence >= threshold ? answer.choice : "unknown";
     const isFinding = decision === "non_compliant" || decision === "unknown";
     return {
       id: rule.id,

@@ -11,6 +11,7 @@ export interface Rule {
   question: string;
   level: Level;
   message: string;
+  threshold?: number;
 }
 
 export interface Config {

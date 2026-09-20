@@ -54,9 +54,12 @@ rules:
     question: Does this change update Storybook when it adds, removes, or materially changes a UI component, page, or screen?
     level: error
     message: Add or update the related Storybook stories.
+    threshold: 0.85
 ```
 
 Use `error` to block the check. Use `warning` to report a result without a block.
+
+The global `threshold` applies to all rules by default. Set `threshold` on a rule to override it for that rule. A threshold must be from `0.5` to `1`.
 
 ## Run checks
 
